@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bc9c153a27ca487d8cb33a20d42448e7" Name="Diagram1">
+        <EntityTypeShape EntityType="EPModel.City" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EPModel.Concert" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="EPModel.Organizer" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EPModel.Role" Width="1.5" PointX="5.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EPModel.Singer" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EPModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EPModel.Type_of_concert" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EPModel.Type_of_music" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EPModel.User" Width="1.5" PointX="8" PointY="5.875" IsExpanded="true" />
+        <AssociationConnector Association="EPModel.FK_Concert_City" ManuallyRouted="false" />
+        <AssociationConnector Association="EPModel.FK_Concert_Organizer" ManuallyRouted="false" />
+        <AssociationConnector Association="EPModel.FK_Concert_Singer" ManuallyRouted="false" />
+        <AssociationConnector Association="EPModel.FK_Concert_Type_of_concert" ManuallyRouted="false" />
+        <AssociationConnector Association="EPModel.FK_User_Role" ManuallyRouted="false" />
+        <AssociationConnector Association="EPModel.FK_Singer_Type_of_music" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

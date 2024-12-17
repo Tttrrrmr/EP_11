@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище EPModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID_city" />
+          </Key>
+          <Property Name="ID_city" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Concert">
+          <Key>
+            <PropertyRef Name="ID_concert" />
+          </Key>
+          <Property Name="ID_concert" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_type_of_concert" Type="int" Nullable="false" />
+          <Property Name="ID_singer" Type="int" Nullable="false" />
+          <Property Name="ID_city" Type="int" Nullable="false" />
+          <Property Name="ID_organizer" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Cost" Type="int" Nullable="false" />
+          <Property Name="Logo" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Organizer">
+          <Key>
+            <PropertyRef Name="ID_organizer" />
+          </Key>
+          <Property Name="ID_organizer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Singer">
+          <Key>
+            <PropertyRef Name="ID_singer" />
+          </Key>
+          <Property Name="ID_singer" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_type_of_music" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Type_of_concert">
+          <Key>
+            <PropertyRef Name="ID_type_of_concert" />
+          </Key>
+          <Property Name="ID_type_of_concert" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Type_of_music">
+          <Key>
+            <PropertyRef Name="ID_type_of_music" />
+          </Key>
+          <Property Name="ID_type_of_music" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_user" />
+          </Key>
+          <Property Name="ID_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_role" Type="int" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Concert_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Concert" Type="Self.Concert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID_city" />
+            </Principal>
+            <Dependent Role="Concert">
+              <PropertyRef Name="ID_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concert_Organizer">
+          <End Role="Organizer" Type="Self.Organizer" Multiplicity="1" />
+          <End Role="Concert" Type="Self.Concert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizer">
+              <PropertyRef Name="ID_organizer" />
+            </Principal>
+            <Dependent Role="Concert">
+              <PropertyRef Name="ID_organizer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concert_Singer">
+          <End Role="Singer" Type="Self.Singer" Multiplicity="1" />
+          <End Role="Concert" Type="Self.Concert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Singer">
+              <PropertyRef Name="ID_singer" />
+            </Principal>
+            <Dependent Role="Concert">
+              <PropertyRef Name="ID_singer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concert_Type_of_concert">
+          <End Role="Type_of_concert" Type="Self.Type_of_concert" Multiplicity="1" />
+          <End Role="Concert" Type="Self.Concert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_of_concert">
+              <PropertyRef Name="ID_type_of_concert" />
+            </Principal>
+            <Dependent Role="Concert">
+              <PropertyRef Name="ID_type_of_concert" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Singer_Type_of_music">
+          <End Role="Type_of_music" Type="Self.Type_of_music" Multiplicity="1" />
+          <End Role="Singer" Type="Self.Singer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_of_music">
+              <PropertyRef Name="ID_type_of_music" />
+            </Principal>
+            <Dependent Role="Singer">
+              <PropertyRef Name="ID_type_of_music" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище EPModelContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Concert" EntityType="Self.Concert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organizer" EntityType="Self.Organizer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Singer" EntityType="Self.Singer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_of_concert" EntityType="Self.Type_of_concert" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Type_of_music" EntityType="Self.Type_of_music" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Concert_City" Association="Self.FK_Concert_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Concert" EntitySet="Concert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concert_Organizer" Association="Self.FK_Concert_Organizer">
+            <End Role="Organizer" EntitySet="Organizer" />
+            <End Role="Concert" EntitySet="Concert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concert_Singer" Association="Self.FK_Concert_Singer">
+            <End Role="Singer" EntitySet="Singer" />
+            <End Role="Concert" EntitySet="Concert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concert_Type_of_concert" Association="Self.FK_Concert_Type_of_concert">
+            <End Role="Type_of_concert" EntitySet="Type_of_concert" />
+            <End Role="Concert" EntitySet="Concert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Singer_Type_of_music" Association="Self.FK_Singer_Type_of_music">
+            <End Role="Type_of_music" EntitySet="Type_of_music" />
+            <End Role="Singer" EntitySet="Singer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EPModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="ID_city" />
+          </Key>
+          <Property Name="ID_city" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Concert" Relationship="Self.FK_Concert_City" FromRole="City" ToRole="Concert" />
+        </EntityType>
+        <EntityType Name="Concert">
+          <Key>
+            <PropertyRef Name="ID_concert" />
+          </Key>
+          <Property Name="ID_concert" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_type_of_concert" Type="Int32" Nullable="false" />
+          <Property Name="ID_singer" Type="Int32" Nullable="false" />
+          <Property Name="ID_city" Type="Int32" Nullable="false" />
+          <Property Name="ID_organizer" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Cost" Type="Int32" Nullable="false" />
+          <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Concert_City" FromRole="Concert" ToRole="City" />
+          <NavigationProperty Name="Organizer" Relationship="Self.FK_Concert_Organizer" FromRole="Concert" ToRole="Organizer" />
+          <NavigationProperty Name="Singer" Relationship="Self.FK_Concert_Singer" FromRole="Concert" ToRole="Singer" />
+          <NavigationProperty Name="Type_of_concert" Relationship="Self.FK_Concert_Type_of_concert" FromRole="Concert" ToRole="Type_of_concert" />
+        </EntityType>
+        <EntityType Name="Organizer">
+          <Key>
+            <PropertyRef Name="ID_organizer" />
+          </Key>
+          <Property Name="ID_organizer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Concert" Relationship="Self.FK_Concert_Organizer" FromRole="Organizer" ToRole="Concert" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="ID_role" />
+          </Key>
+          <Property Name="ID_role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Singer">
+          <Key>
+            <PropertyRef Name="ID_singer" />
+          </Key>
+          <Property Name="ID_singer" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_type_of_music" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Concert" Relationship="Self.FK_Concert_Singer" FromRole="Singer" ToRole="Concert" />
+          <NavigationProperty Name="Type_of_music" Relationship="Self.FK_Singer_Type_of_music" FromRole="Singer" ToRole="Type_of_music" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Type_of_concert">
+          <Key>
+            <PropertyRef Name="ID_type_of_concert" />
+          </Key>
+          <Property Name="ID_type_of_concert" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Concert" Relationship="Self.FK_Concert_Type_of_concert" FromRole="Type_of_concert" ToRole="Concert" />
+        </EntityType>
+        <EntityType Name="Type_of_music">
+          <Key>
+            <PropertyRef Name="ID_type_of_music" />
+          </Key>
+          <Property Name="ID_type_of_music" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Singer" Relationship="Self.FK_Singer_Type_of_music" FromRole="Type_of_music" ToRole="Singer" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID_user" />
+          </Key>
+          <Property Name="ID_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_role" Type="Int32" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
+        </EntityType>
+        <Association Name="FK_Concert_City">
+          <End Role="City" Type="Self.City" Multiplicity="1" />
+          <End Role="Concert" Type="Self.Concert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="ID_city" />
+            </Principal>
+            <Dependent Role="Concert">
+              <PropertyRef Name="ID_city" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concert_Organizer">
+          <End Role="Organizer" Type="Self.Organizer" Multiplicity="1" />
+          <End Role="Concert" Type="Self.Concert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organizer">
+              <PropertyRef Name="ID_organizer" />
+            </Principal>
+            <Dependent Role="Concert">
+              <PropertyRef Name="ID_organizer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concert_Singer">
+          <End Role="Singer" Type="Self.Singer" Multiplicity="1" />
+          <End Role="Concert" Type="Self.Concert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Singer">
+              <PropertyRef Name="ID_singer" />
+            </Principal>
+            <Dependent Role="Concert">
+              <PropertyRef Name="ID_singer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Concert_Type_of_concert">
+          <End Role="Type_of_concert" Type="Self.Type_of_concert" Multiplicity="1" />
+          <End Role="Concert" Type="Self.Concert" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_of_concert">
+              <PropertyRef Name="ID_type_of_concert" />
+            </Principal>
+            <Dependent Role="Concert">
+              <PropertyRef Name="ID_type_of_concert" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="ID_role" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="ID_role" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Singer_Type_of_music">
+          <End Role="Type_of_music" Type="Self.Type_of_music" Multiplicity="1" />
+          <End Role="Singer" Type="Self.Singer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Type_of_music">
+              <PropertyRef Name="ID_type_of_music" />
+            </Principal>
+            <Dependent Role="Singer">
+              <PropertyRef Name="ID_type_of_music" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EPEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Concert" EntityType="Self.Concert" />
+          <EntitySet Name="Organizer" EntityType="Self.Organizer" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
+          <EntitySet Name="Singer" EntityType="Self.Singer" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Type_of_concert" EntityType="Self.Type_of_concert" />
+          <EntitySet Name="Type_of_music" EntityType="Self.Type_of_music" />
+          <EntitySet Name="User" EntityType="Self.User" />
+          <AssociationSet Name="FK_Concert_City" Association="Self.FK_Concert_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Concert" EntitySet="Concert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concert_Organizer" Association="Self.FK_Concert_Organizer">
+            <End Role="Organizer" EntitySet="Organizer" />
+            <End Role="Concert" EntitySet="Concert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concert_Singer" Association="Self.FK_Concert_Singer">
+            <End Role="Singer" EntitySet="Singer" />
+            <End Role="Concert" EntitySet="Concert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Concert_Type_of_concert" Association="Self.FK_Concert_Type_of_concert">
+            <End Role="Type_of_concert" EntitySet="Type_of_concert" />
+            <End Role="Concert" EntitySet="Concert" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Singer_Type_of_music" Association="Self.FK_Singer_Type_of_music">
+            <End Role="Type_of_music" EntitySet="Type_of_music" />
+            <End Role="Singer" EntitySet="Singer" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище EPModelContainer" CdmEntityContainer="EPEntities">
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="EPModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="ID_city" ColumnName="ID_city" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Concert">
+            <EntityTypeMapping TypeName="EPModel.Concert">
+              <MappingFragment StoreEntitySet="Concert">
+                <ScalarProperty Name="ID_concert" ColumnName="ID_concert" />
+                <ScalarProperty Name="ID_type_of_concert" ColumnName="ID_type_of_concert" />
+                <ScalarProperty Name="ID_singer" ColumnName="ID_singer" />
+                <ScalarProperty Name="ID_city" ColumnName="ID_city" />
+                <ScalarProperty Name="ID_organizer" ColumnName="ID_organizer" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizer">
+            <EntityTypeMapping TypeName="EPModel.Organizer">
+              <MappingFragment StoreEntitySet="Organizer">
+                <ScalarProperty Name="ID_organizer" ColumnName="ID_organizer" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="EPModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Singer">
+            <EntityTypeMapping TypeName="EPModel.Singer">
+              <MappingFragment StoreEntitySet="Singer">
+                <ScalarProperty Name="ID_singer" ColumnName="ID_singer" />
+                <ScalarProperty Name="ID_type_of_music" ColumnName="ID_type_of_music" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="EPModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_of_concert">
+            <EntityTypeMapping TypeName="EPModel.Type_of_concert">
+              <MappingFragment StoreEntitySet="Type_of_concert">
+                <ScalarProperty Name="ID_type_of_concert" ColumnName="ID_type_of_concert" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Type_of_music">
+            <EntityTypeMapping TypeName="EPModel.Type_of_music">
+              <MappingFragment StoreEntitySet="Type_of_music">
+                <ScalarProperty Name="ID_type_of_music" ColumnName="ID_type_of_music" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="EPModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="ID_user" ColumnName="ID_user" />
+                <ScalarProperty Name="ID_role" ColumnName="ID_role" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

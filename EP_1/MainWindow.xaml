@@ -1,0 +1,39 @@
+﻿<Window x:Class="EP_1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EP_1"
+        mc:Ignorable="d"
+              Title="Авторизация" Height="450" Width="800">
+    <Grid Background="#FFE4E1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Background="#FF5050">
+            <Image Source="/Images/logo.jpg" Width="77" Height="80" Margin="5,0"/>
+            <TextBlock Text="Авторизация" Foreground="#FFFFFF" FontSize="40px" Margin="5,0" Width="400" Height="60" FontFamily="Comic Sans MS"/>
+        </StackPanel>
+
+
+        <Grid HorizontalAlignment="Center" Width="678" Grid.Row="1">
+
+            <StackPanel Grid.Row="1" Margin="50" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Введите логин:" HorizontalAlignment="Left" Height="38" Margin="10,10,0,0" VerticalAlignment="Top" Width="170" FontSize="20" FontFamily="Comic Sans MS"/>
+                    <TextBox x:Name="txbLogin" HorizontalAlignment="Left" Height="46" Margin="10,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="380" FontSize="20" Background="#FF9876"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Введите пароль:" HorizontalAlignment="Left" Height="43" Margin="10,10,0,0" VerticalAlignment="Top" Width="170" FontSize="20" FontFamily="Comic Sans MS"/>
+                    <PasswordBox x:Name="psbPassword" HorizontalAlignment="Left" Height="46" Margin="10,0,0,0" VerticalAlignment="Center" Width="380" FontSize="20" Background="#FF9876"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Войти" HorizontalAlignment="Left" Height="52" Margin="10,10,0,0" VerticalAlignment="Top" Width="145" FontSize="20" Click="Button_Click" Background="#FF362f" Foreground="#FFFFFF" FontFamily="Comic Sans MS"/>
+                    <Button Content="Регистрация" HorizontalAlignment="Left" Height="52" Margin="10,10,0,0" VerticalAlignment="Top" Width="145" FontSize="20" Click="Button_Click_1" Background="#FF362f" Foreground="#FFFFFF" FontFamily="Comic Sans MS"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
