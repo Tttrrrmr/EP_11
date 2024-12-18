@@ -21,9 +21,31 @@ namespace EP_1.Model
         public int ID_organizer { get; set; }
         public string Name { get; set; }
         public System.DateTime Date { get; set; }
+
+        public string date
+        {
+            get
+            {
+                Console.WriteLine(Date.ToShortDateString());
+                return Date.ToShortDateString();
+            }
+        }
+
         public int Cost { get; set; }
         public string Logo { get; set; }
-    
+
+        public string Pic
+        {
+            get
+            {
+                if (string.IsNullOrEmpty($"../../Images/{Logo}"))
+                {
+                    return "../Images/picture.png";
+                }
+                return $"../Images/{Logo}";
+            }
+        }
+
         public virtual City City { get; set; }
         public virtual Organizer Organizer { get; set; }
         public virtual Singer Singer { get; set; }

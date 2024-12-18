@@ -70,6 +70,9 @@
     <Compile Include="Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Window3.xaml.cs">
+      <DependentUpon>Window3.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Window2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,6 +179,13 @@
   <ItemGroup>
     <Resource Include="Images\picture.png" />
     <Resource Include="Images\logo.jpg" />
+    <Resource Include="Images\13.jpg" />
+    <Resource Include="Images\daniil-kim.jpg" />
+    <Resource Include="Images\gspd-i-dead-blonde.jpeg" />
+    <Resource Include="Images\gspd.jpg" />
+    <Resource Include="Images\mukka.jpg" />
+    <Resource Include="Images\pol-punsh.jpeg" />
+    <Resource Include="Images\pyro.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

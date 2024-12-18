@@ -65,27 +65,23 @@ namespace EP_1
 
         private void PasswordBox1_PasswordChanged(object sender, RoutedEventArgs e)
         {
+            string password = psbPass.Password;
+            bool isValid = password.Length <= 4 && !Regex.IsMatch(password, @"[^\w\s]");
 
+            //проверка пароля на вводимый текст и валидацию
+            if (psbPass.Password != psbPass1.Password || !isValid)
+            {
+                btnCreate.IsEnabled = false;
+                psbPass1.Background=Brushes.LightCoral;
+                psbPass1.BorderBrush = Brushes.Red;
+            }
+            else
+            {
+                btnCreate.IsEnabled = true;
+                psbPass1.Background =Brushes.LightGreen;
+                psbPass1.BorderBrush = Brushes.LightGreen;
+            }
         }
     }
 
-    private void PasswordBox1_PasswordChanged(object sender, RoutedEventArgs e)
-    {
-        string password = psbPass.Password;
-        bool isValid = password.Length >= 4 && !Regex.IsMatch(password, @"[^\w\s]");
-
-        //проверка пароля на вводимый текст и валидацию
-        if (psbPass.Password != psbPass1.Password || !isValid)
-        {
-            btnCreate.IsEnabled = false;
-            psbPass1.Background=Brushes.LightCoral;
-            psbPass1.BorderBrush = Brushes.Red;
-        }
-        else
-        {
-            btnCreate.IsEnabled = true;
-            psbPass1.Background =Brushes.LightGreen;
-            psbPass1.BorderBrush = Brushes.LightGreen;
-        }
-    }
 }

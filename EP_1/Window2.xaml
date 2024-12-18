@@ -5,8 +5,97 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EP_1"
         mc:Ignorable="d"
-        Title="Window2" Height="450" Width="800">
-    <Grid>
-        
+        Title="Каталог" Height="450" Width="800">
+    <Grid Background="#FFE4E1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Background="#FF5050">
+            <Image Source="/Images/logo.jpg" Width="89" Height="84" Margin="5,0"/>
+            <TextBlock Text="Каталог" Foreground="#FFFFFF" FontSize="40px" Margin="5,0" Width="400" Height="61" FontFamily="Comic Sans MS"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80"/>
+                <RowDefinition/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Width="800">
+                <ListView x:Name="ListOfConcert" Width="691" Height="159" Margin="5" Grid.Row="1">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="120"/>
+                                        <ColumnDefinition Width="400"/>
+                                        <ColumnDefinition Width="120"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Margin="5">
+                                        <StackPanel Grid.Column="0" Margin="5">
+                                            <TextBlock>
+                            <Image Source="{Binding Pic}" Width="100" Height="100"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="1" Margin="5">
+                                        <StackPanel Grid.Column="1" Orientation="Vertical" Margin="5">
+                                            <TextBlock>
+                            <Run Text="{Binding Name}" FontWeight="Bold"/>
+                                            </TextBlock>
+                                            <TextBlock>
+                            <Run Text="Исполнитель: "/>
+                            <Run Text="{Binding Singer.Name}" FontWeight="Bold"/>
+                                            </TextBlock>
+                                            <TextBlock>
+                            <Run Text="Город: "/>
+                            <Run Text="{Binding City.Name}"/>
+                                            </TextBlock>
+                                            <TextBlock>
+                            <Run Text="Тип концерта: "/>
+                            <Run Text="{Binding Type_of_concert.Name}"/>
+                                            </TextBlock>
+                                            <TextBlock>
+                            <Run Text="Цена: "/>
+                            <Run Text="{Binding Cost, StringFormat=C}"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Border>
+
+                                    <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" Margin="4">
+                                        <StackPanel Grid.Column="2" Margin="4">
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="Период создания: "/>
+                                            </TextBlock>
+                                            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <Run Text="{Binding date}"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollViewer>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center">
+                <ComboBox x:Name="ComboFilter" HorizontalAlignment="Left" Margin="5,5,0,5" Width="158" Height="28" SelectionChanged="ComboBox_SelectionChanged"/>
+                <ComboBox x:Name="ComboSort" HorizontalAlignment="Left" Margin="15,5,0,5" Width="149" Height="28" SelectionChanged="ComboSort_SelectionChanged"/>
+                <TextBox x:Name="TextSearch" HorizontalAlignment="Left" Margin="15,5,0,5" TextWrapping="Wrap" Width="277" Height="28" Background="#FF9876" TextChanged="TextSearch_TextChanged"/>
+                <Label x:Name="LabelCount" Content="" HorizontalAlignment="Left" Margin="15,5,5,5" Width="126" Height="28"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center" Height="60" VerticalAlignment="Center">
+                <Button x:Name="BtnAdd" Content="Добавить" HorizontalAlignment="Left" Margin="10,5,5,5" Width="148" Height="28" FontSize="16" Click="BtnAdd_Click" Background="#FF362f"  Foreground="#FFFFFF" FontFamily="Comic Sans MS"/>
+                <Button x:Name="BtnDelete" Content="Удалить" HorizontalAlignment="Left" Margin="10,5,5,5" Width="148" Height="28" FontSize="16" Click="BtnDelete_Click" Background="#FF362f"  Foreground="#FFFFFF" FontFamily="Comic Sans MS"/>
+                <Button x:Name="BtnEdit" Content="Редактировать" HorizontalAlignment="Left" Margin="10,5,5,5" Width="148" Height="28" FontSize="16" Click="BtnEdit_Click" Background="#FF362f"  Foreground="#FFFFFF" FontFamily="Comic Sans MS"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

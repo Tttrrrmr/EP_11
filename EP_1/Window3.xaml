@@ -1,0 +1,55 @@
+﻿<Window x:Class="EP_1.Window3"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EP_1"
+        mc:Ignorable="d"
+            Title="Добавление и редактирование формы" Height="447" Width="713">
+    <Grid Background="#FFE4E1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Background="#FF5050">
+            <Image Source="/Images/logo.jpg" Width="81" Height="77" Margin="5,0"/>
+            <TextBlock Text="Окно администратора" Foreground="#FFFFFF" FontSize="40px" Margin="5,0" Width="580" Height="60" FontFamily="Comic Sans MS"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите фамилию и имя Студента" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <TextBox x:Name="TextStudent" Text="{Binding Path=Student.Name}" HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите ФИО Преподавателя" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <TextBox x:Name="TextProfessor" Text="{Binding Path=Professor.Name}" HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите тип проекта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <ComboBox x:Name="ComboType"  HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" VerticalAlignment="Top" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите название проекта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <TextBox x:Name="TextName" Text="{Binding Path=Name}" HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите период годового проекта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <TextBox x:Name="TextPeriod" Text="{Binding Path=Project_period}" HorizontalAlignment="Left" Height="26" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите картинку" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <ComboBox x:Name="ComboImage" Text="{Binding Path=Logo}"  HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" VerticalAlignment="Top" Width="300"/>
+                </StackPanel>
+                <!--<Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Center" Height="30" Margin="0,10,0,0" Click="Button_Click" VerticalAlignment="Top" Width="204" FontFamily="Comic Sans MS" Background="#FF362f" Foreground="#FFFFFF"/>-->
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
