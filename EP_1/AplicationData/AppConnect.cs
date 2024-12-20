@@ -9,6 +9,6 @@ namespace EP_1.AplicationData
 {
     public class AppConnect
     {
-        public static EPEntities model0db;
+        public static EPEntities1 model0db;
     }
 }

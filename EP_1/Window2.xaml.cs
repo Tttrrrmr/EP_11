@@ -38,18 +38,6 @@ namespace EP_1
             ComboSort.Items.Add("от А до Я");
             ComboSort.Items.Add("от Я до А");
 
-            ListOfConcert.SelectionChanged += new SelectionChangedEventHandler((s, e) =>
-            {
-                BtnEdit.IsEnabled = ListOfConcert.SelectedItem != null && role != 3;
-                BtnDelete.IsEnabled = ListOfConcert.SelectedItem != null && role != 3;
-                BtnDelete.IsEnabled = ListOfConcert.SelectedItem != null && role != 2;
-            });
-            FocusableChanged += new DependencyPropertyChangedEventHandler((s, e) =>
-            {
-                ListOfConcert.ItemsSource = AppConnect.model0db.Concert.ToList();
-            });
-
-            
             if (role == 2)
             {
                 BtnDelete.IsEnabled = false;

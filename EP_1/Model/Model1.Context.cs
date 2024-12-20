@@ -13,10 +13,10 @@ namespace EP_1.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class EPEntities : DbContext
+    public partial class EPEntities1 : DbContext
     {
-        public EPEntities()
-            : base("name=EPEntities")
+        public EPEntities1()
+            : base("name=EPEntities1")
         {
         }
     

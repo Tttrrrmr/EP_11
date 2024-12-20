@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,11 +23,22 @@ namespace EP_1
         public MainWindow()
         {
             InitializeComponent();
-            AppConnect.model0db = new Model.EPEntities();
+            AppConnect.model0db = new Model.EPEntities1();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            string login = txbLogin.Text.Trim();
+            if (!Regex.IsMatch(login, "^[a-zA-Z0-9]+$"))
+            {
+                MessageBox.Show("Логин может содержать только латинские буквы и цифры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            string password = psbPassword.Password;
+            bool isValid = password.Length <= 4 && !Regex.IsMatch(password, @"[^\w\s]");
+
+
             User user = new User();
             try
             {
@@ -56,18 +68,21 @@ namespace EP_1
                             MessageBox.Show("Данные не обнаружены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                             break;
                     }
+
                 }
+
+                Window2 window = new Window2(user.ID_role, user.ID_user);
+                window.Show();
+                this.Close();
+
             }
             catch (Exception Ex)
             {
                 MessageBox.Show("Ошибка " + Ex.Message.ToString() + "Критическая работа приложения!",
                     "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
-
-            Window2 window = new Window2(user.ID_role, user.ID_user);
-            window.Show();
-            this.Close();
         }
+    
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {

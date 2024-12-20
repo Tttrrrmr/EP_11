@@ -22,7 +22,7 @@
           <Property Name="ID_city" Type="int" Nullable="false" />
           <Property Name="ID_organizer" Type="int" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Date_concert" Type="date" Nullable="false" />
           <Property Name="Cost" Type="int" Nullable="false" />
           <Property Name="Logo" Type="nvarchar" MaxLength="50" />
         </EntityType>
@@ -212,7 +212,7 @@
           <Property Name="ID_city" Type="Int32" Nullable="false" />
           <Property Name="ID_organizer" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_concert" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Cost" Type="Int32" Nullable="false" />
           <Property Name="Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="City" Relationship="Self.FK_Concert_City" FromRole="Concert" ToRole="City" />
@@ -355,7 +355,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="EPEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EPEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Concert" EntityType="Self.Concert" />
           <EntitySet Name="Organizer" EntityType="Self.Organizer" />
@@ -395,7 +395,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище EPModelContainer" CdmEntityContainer="EPEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище EPModelContainer" CdmEntityContainer="EPEntities1">
           <EntitySetMapping Name="City">
             <EntityTypeMapping TypeName="EPModel.City">
               <MappingFragment StoreEntitySet="City">
@@ -413,7 +413,7 @@
                 <ScalarProperty Name="ID_city" ColumnName="ID_city" />
                 <ScalarProperty Name="ID_organizer" ColumnName="ID_organizer" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Date_concert" ColumnName="Date_concert" />
                 <ScalarProperty Name="Cost" ColumnName="Cost" />
                 <ScalarProperty Name="Logo" ColumnName="Logo" />
               </MappingFragment>

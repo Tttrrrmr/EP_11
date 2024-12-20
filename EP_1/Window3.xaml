@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EP_1"
         mc:Ignorable="d"
-            Title="Добавление и редактирование формы" Height="447" Width="713">
+            Title="Добавление и редактирование формы" Height="517" Width="713">
     <Grid Background="#FFE4E1">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -14,41 +14,51 @@
 
         <StackPanel Orientation="Horizontal" Background="#FF5050">
             <Image Source="/Images/logo.jpg" Width="81" Height="77" Margin="5,0"/>
-            <TextBlock Text="Окно администратора" Foreground="#FFFFFF" FontSize="40px" Margin="5,0" Width="580" Height="60" FontFamily="Comic Sans MS"/>
+            <TextBlock Text="Форма изменений" Foreground="#FFFFFF" FontSize="40px" Margin="5,0" Width="580" Height="60" FontFamily="Comic Sans MS"/>
         </StackPanel>
 
         <Grid Grid.Row="1" HorizontalAlignment="Center">
             <StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите фамилию и имя Студента" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
-                    <TextBox x:Name="TextStudent" Text="{Binding Path=Student.Name}" HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
+                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите исполнителя" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <ComboBox x:Name="ComboArtist"  HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" VerticalAlignment="Top" Width="300"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите ФИО Преподавателя" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
-                    <TextBox x:Name="TextProfessor" Text="{Binding Path=Professor.Name}" HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
+                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите город" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <ComboBox x:Name="ComboCity"  HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" VerticalAlignment="Top" Width="300"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите тип проекта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <TextBlock HorizontalAlignment="Left" Height="23" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите дату концерта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <DatePicker x:Name="DatePickerConcert" Text="{Binding Date_concert}"   HorizontalAlignment="Left" Height="23" Margin="5,5,0,0" VerticalAlignment="Top" Width="300"/>
+                </StackPanel>
+                
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите тип концерта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
                     <ComboBox x:Name="ComboType"  HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" VerticalAlignment="Top" Width="300"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите название проекта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите название концерта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
                     <TextBox x:Name="TextName" Text="{Binding Path=Name}" HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,5">
-                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите период годового проекта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
-                    <TextBox x:Name="TextPeriod" Text="{Binding Path=Project_period}" HorizontalAlignment="Left" Height="26" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
+                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" TextWrapping="Wrap" Text="Введите стоимость" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <TextBox x:Name="TextCost" Text="{Binding Path= Cost}" HorizontalAlignment="Left" Height="26" Margin="5,5,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="300"/>
                 </StackPanel>
 
+                <StackPanel Orientation="Horizontal" Margin="0,5">
+                    <TextBlock HorizontalAlignment="Left" Height="35" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите организатора концерта" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
+                    <ComboBox x:Name="ComboOrganiz"  HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" VerticalAlignment="Top" Width="300"/>
+                </StackPanel>
+                
                 <StackPanel Orientation="Horizontal" Margin="0,5">
                     <TextBlock HorizontalAlignment="Left" Height="20" Margin="5,5,0,0" TextWrapping="Wrap" Text="Выберите картинку" VerticalAlignment="Top" Width="153" FontFamily="Comic Sans MS"/>
                     <ComboBox x:Name="ComboImage" Text="{Binding Path=Logo}"  HorizontalAlignment="Left" Height="24" Margin="5,5,0,0" VerticalAlignment="Top" Width="300"/>
                 </StackPanel>
-                <!--<Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Center" Height="30" Margin="0,10,0,0" Click="Button_Click" VerticalAlignment="Top" Width="204" FontFamily="Comic Sans MS" Background="#FF362f" Foreground="#FFFFFF"/>-->
+                <Button x:Name="BtnSave" Content="Сохранить" HorizontalAlignment="Center" Height="30" Margin="0,10,0,0" Click="Button_Click" VerticalAlignment="Top" Width="204" FontFamily="Comic Sans MS" Background="#FF362f" Foreground="#FFFFFF"/>
             </StackPanel>
         </Grid>
     </Grid>

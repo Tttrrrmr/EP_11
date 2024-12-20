@@ -20,17 +20,16 @@ namespace EP_1.Model
         public int ID_city { get; set; }
         public int ID_organizer { get; set; }
         public string Name { get; set; }
-        public System.DateTime Date { get; set; }
+        public System.DateTime Date_concert { get; set; }
 
-        public string date
-        {
-            get
-            {
-                Console.WriteLine(Date.ToShortDateString());
-                return Date.ToShortDateString();
-            }
-        }
-
+        //public string date
+        //{
+        //    get
+        //    {
+        //        Console.WriteLine(Date_concert.ToShortDateString());
+        //        return Date_concert.ToShortDateString();
+        //    }
+        //}
         public int Cost { get; set; }
         public string Logo { get; set; }
 

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EP_1"
         mc:Ignorable="d"
-        Title="Каталог" Height="450" Width="800">
+        Title="Каталог" Height="454" Width="800">
     <Grid Background="#FFE4E1">
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
@@ -62,7 +62,7 @@
                                             </TextBlock>
                                             <TextBlock>
                             <Run Text="Цена: "/>
-                            <Run Text="{Binding Cost, StringFormat=C}"/>
+                            <Run Text="{Binding Cost, StringFormat={}{0} руб.}"/>
                                             </TextBlock>
                                         </StackPanel>
                                     </Border>
@@ -70,10 +70,10 @@
                                     <Border BorderBrush="Black" BorderThickness="1" Grid.Column="2" Margin="4">
                                         <StackPanel Grid.Column="2" Margin="4">
                                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Run Text="Период создания: "/>
+                            <Run Text="Дата концерта: "/>
                                             </TextBlock>
                                             <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <Run Text="{Binding date}"/>
+                            <Run Text="{Binding Date_concert , StringFormat = yyyy-MM-dd}"/>
                                             </TextBlock>
                                         </StackPanel>
                                     </Border>

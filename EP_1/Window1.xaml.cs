@@ -29,6 +29,26 @@ namespace EP_1
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
         {
+            string name = txbName.Text.Trim();
+            if (!Regex.IsMatch(name, "[а-яА-Я]"))
+            {
+                MessageBox.Show("Имя может содерджать только кириллицу", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            string login = txbLogin.Text.Trim();
+            if (!Regex.IsMatch(login, "^[a-zA-Z0-9]+$"))
+            {
+                MessageBox.Show("Логин может содержать только латинские буквы и цифры", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (string.IsNullOrWhiteSpace(psbPass.Password))
+            {
+                MessageBox.Show("1111", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+
             //проверка на одинаковые значения
             if (AppConnect.model0db.User.Count(x => x.Login==txbLogin.Text)>0)
             {
@@ -62,7 +82,6 @@ namespace EP_1
             window.Show();
             this.Close();
         }
-
         private void PasswordBox1_PasswordChanged(object sender, RoutedEventArgs e)
         {
             string password = psbPass.Password;
@@ -81,7 +100,10 @@ namespace EP_1
                 psbPass1.Background =Brushes.LightGreen;
                 psbPass1.BorderBrush = Brushes.LightGreen;
             }
+
         }
+
+
     }
 
 }
